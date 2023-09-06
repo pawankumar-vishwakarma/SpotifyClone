@@ -1,5 +1,7 @@
 body {
     background-color: antiquewhite;
+    background-image: url(/img/bg.jpg);
+    background-size: cover;
 }
 
 * {
