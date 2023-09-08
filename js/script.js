@@ -5,6 +5,7 @@ let masterPlay = document.getElementById('masterPlay');
 let myProgressBar = document.getElementById('myProgressBar');
 let gif = document.getElementById('gif');
 let songItem = Array.from(document.getElementsByClassName('songItem'));
+let cover = document.getElementById('cover');
 
 let songs = [
     { songName: "Shriman Narayan Hari Hari", filePath: "/songs/Shriman Narayan Hari Hari.mp3", coverPath: "/img/shreeman.jpg", timeStamp: "04:29" },
@@ -93,6 +94,7 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) =>
             audioElement.src = songs[songIndex].filePath;
             audioElement.currentTime = 0;
             masterSongName.innerText = songs[songIndex].songName;
+            cover.src = songs[songIndex].coverPath;            
             audioElement.play();
         } else {
             e.target.classList.remove('fa-pause-circle');
@@ -116,6 +118,7 @@ document.getElementById('previous').addEventListener('click', () => {
     }
     audioElement.src = songs[songIndex].filePath;
     masterSongName.innerText = songs[songIndex].songName;
+    cover.src = songs[songIndex].coverPath;
     audioElement.currentTime = 0;
     audioElement.play();
     masterPlay.classList.remove('fa-circle-play');
@@ -137,6 +140,7 @@ document.getElementById('next').addEventListener('click', () => {
     }
     audioElement.src = songs[songIndex].filePath;
     masterSongName.innerText = songs[songIndex].songName;
+    cover.src = songs[songIndex].coverPath;
     audioElement.currentTime = 0;
     audioElement.play();
     masterPlay.classList.remove('fa-circle-play');
