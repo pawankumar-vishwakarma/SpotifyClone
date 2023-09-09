@@ -20,11 +20,40 @@ let songs = [
     { songName: "Shriman Narayan Hari Hari", filePath: "/songs/Shriman Narayan Hari Hari.mp3", coverPath: "/img/shreeman.jpg", timeStamp: "04:29" }
 ]
 
+//Set first songItem of the page
 songItem.forEach((element, i) => {
     element.getElementsByTagName("img")[0].src = songs[i].coverPath;
     element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
     element.getElementsByClassName("duration")[0].innerText = songs[i].timeStamp;
 });
+
+// Function to add a new song item to the page
+function addSongToPage(song) {
+    const songList = document.querySelector('.songList');
+    
+    const songItem = document.createElement('div');
+    songItem.classList.add('songItem');
+    
+    // Create the song item's content 
+    songItem.innerHTML = `
+        <img src="${song.coverPath}" alt="${song.songName}">
+        <span class="songName">${song.songName}</span>
+        <span class="songlistplay">
+            <span class="timestamp"><time class="duration">${song.timeStamp}</time> <i class="far songItemPlay fa-solid fa-circle-play"></i></span>
+        </span>
+    `;
+    
+    // Append the new song item to the song list container
+    songList.appendChild(songItem);
+}
+
+//loop for adding songs to the page
+for(let i=1; i<=songs.length-1; i++){
+    let newSong = songs[i];
+    addSongToPage(newSong);
+}
+
+
 
 // Function to update mini play buttons based on the currently playing song
 function updateMiniPlayButtons() {
